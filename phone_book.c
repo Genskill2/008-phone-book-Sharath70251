@@ -245,9 +245,16 @@ int delete(FILE *db_file, char *name) {
          If the node to be deleted is p0, it's a special case. 
       */
 
-      /* TBD */
+     f ( prev == NULL )
+        base = p->next ;
+      else
+        prev->next = p->next ;
+      realloc(p,0);
+      deleted++;
     }
-  }
+  prev = p;
+  p = p->next; /* TBD */
+      }
   write_all_entries(base);
   free_entries(base);
   return deleted;
